@@ -1,4 +1,4 @@
-# AI-Driven Smart Pollution Control System for Delhi
+# AI-Driven Smart Sprinkling System for Delhi
 
 **AirOptima** is an intelligent, data-driven system designed to optimize air pollution mitigation in Delhi-NCR. By moving away from traditional uniform water sprinkling, this platform uses real-time AI to identify pollution sources and deploy resources where they are most effective.
 
