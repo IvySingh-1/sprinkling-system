@@ -8,7 +8,7 @@
 
 ---
 
-## ◈ The Air Quality Paradox
+## ◈ Air Pollution Challenge
 
 Mitigating air pollution in a metropolitan city like Delhi is not a matter of simply "spraying water." uniform deployments lead to massive inefficiencies and dry reservoirs:
 
