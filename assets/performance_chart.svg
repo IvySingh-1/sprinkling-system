@@ -1,0 +1,35 @@
+<svg viewBox="0 0 600 220" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    @keyframes grow-x {
+      from { width: 0; }
+    }
+    .bar { height: 26px; rx: 5px; animation: grow-x 1.5s cubic-bezier(0.1, 0.9, 0.2, 1) forwards; }
+    .axis { stroke: #A48374; stroke-width: 1; }
+    .label { fill: #EBE3DB; font-family: 'Segoe UI', sans-serif; font-size: 11px; font-weight: bold; }
+    .val-text { fill: #F1EDE6; font-family: 'JetBrains Mono', monospace; font-size: 11px; }
+    .title { fill: #F1EDE6; font-family: 'Segoe UI', sans-serif; font-size: 14px; font-weight: bold; letter-spacing: 0.5px; }
+    .subtitle { fill: #CBAD8D; font-family: 'JetBrains Mono', monospace; font-size: 9px; }
+  </style>
+
+  <!-- Title -->
+  <text x="25" y="32" class="title">📊 Daily Water Usage Simulation</text>
+  <text x="25" y="47" class="subtitle">COMPARING 10 DELHI ZONES (UNIFORM MITIGATION vs. AIROPTIMA ACTION)</text>
+
+  <!-- Y-Axis -->
+  <line x1="160" y1="60" x2="160" y2="190" class="axis" />
+
+  <!-- Bar 1: Uniform Spraying -->
+  <text x="25" y="86" class="label">Uniform Spraying</text>
+  <rect x="160" y="70" width="370" class="bar" fill="#A48374" />
+  <text x="540" y="87" class="val-text" fill="#A48374">20.0 kL</text>
+
+  <!-- Bar 2: AirOptima Smart -->
+  <text x="25" y="131" class="label">AirOptima AI</text>
+  <rect x="160" y="115" width="116" class="bar" fill="#CBAD8D" />
+  <text x="286" y="132" class="val-text" fill="#CBAD8D">6.3 kL</text>
+
+  <!-- Bar 3: Water Saved -->
+  <text x="25" y="176" class="label" style="fill: #CBAD8D;">Water Saved (68.5%)</text>
+  <rect x="160" y="160" width="254" class="bar" fill="#F1EDE6" />
+  <text x="424" y="177" class="val-text" style="fill: #F1EDE6; font-weight: bold;">13.7 kL</text>
+</svg>

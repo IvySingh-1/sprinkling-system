@@ -1,0 +1,29 @@
+<svg viewBox="0 0 600 130" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .scale-bg { fill: #EBE3DB; opacity: 0.1; }
+    .label { fill: #EBE3DB; font-family: 'Segoe UI', sans-serif; font-size: 11px; }
+    .scale-val { fill: #F1EDE6; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: bold; }
+    .scale-title { fill: #CBAD8D; font-family: 'Segoe UI', sans-serif; font-size: 12px; font-weight: bold; }
+  </style>
+  <text x="20" y="25" class="scale-title">🔬 PM10 / PM2.5 Ratio Classification Scale</text>
+  
+  <!-- Scale Line -->
+  <rect x="20" y="45" width="560" height="20" rx="4" class="scale-bg" />
+  
+  <!-- Segments -->
+  <!-- Combustion (<1.35) -->
+  <rect x="20" y="45" width="180" height="20" fill="#A48374" rx="4" />
+  <!-- Mixed (1.35 - 1.85) -->
+  <rect x="200" y="45" width="160" height="20" fill="#CBAD8D" />
+  <!-- Dust (>1.85) -->
+  <rect x="360" y="45" width="220" height="20" fill="#F1EDE6" rx="4" />
+  
+  <text x="110" y="80" class="label" text-anchor="middle">Combustion Dominant</text>
+  <text x="110" y="95" class="scale-val" text-anchor="middle">Ratio &lt; 1.35</text>
+  
+  <text x="280" y="80" class="label" text-anchor="middle">Mixed Sources</text>
+  <text x="280" y="95" class="scale-val" text-anchor="middle">1.35 - 1.85</text>
+  
+  <text x="470" y="80" class="label" text-anchor="middle">Dust Dominant</text>
+  <text x="470" y="95" class="scale-val" text-anchor="middle">Ratio &gt; 1.85</text>
+</svg>

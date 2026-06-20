@@ -1,0 +1,63 @@
+<svg viewBox="0 0 800 260" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    @keyframes dash {
+      to {
+        stroke-dashoffset: -20;
+      }
+    }
+    .flow-line { stroke: #CBAD8D; stroke-width: 2; stroke-dasharray: 6 4; animation: dash 1s linear infinite; }
+    .box-bg { fill: #EBE3DB; stroke: #A48374; stroke-width: 1.5; rx: 8px; }
+    .engine-box { fill: #CBAD8D; stroke: #A48374; stroke-width: 2; rx: 8px; }
+    .box-title { fill: #3A2D28; font-family: 'Segoe UI', system-ui, sans-serif; font-size: 13px; font-weight: bold; }
+    .box-body { fill: #3A2D28; font-family: 'JetBrains Mono', monospace; font-size: 10px; }
+    .arrow-head { fill: #CBAD8D; }
+    .header-text { fill: #F1EDE6; font-family: 'Segoe UI', sans-serif; font-size: 11px; font-weight: bold; letter-spacing: 1px; }
+  </style>
+
+  <!-- Section Headers -->
+  <text x="30" y="30" class="header-text" opacity="0.6">ENVIRONMENTAL INPUTS</text>
+  <text x="320" y="30" class="header-text" opacity="0.6">DECISION CORE</text>
+  <text x="610" y="30" class="header-text" opacity="0.6">FLEET ACTIONS</text>
+  <line x1="30" y1="38" x2="770" y2="38" stroke="#A48374" stroke-width="0.5" opacity="0.3" />
+
+  <!-- Node 1: API Streams -->
+  <g transform="translate(30, 60)">
+    <rect width="180" height="150" class="box-bg" />
+    <text x="90" y="28" class="box-title" text-anchor="middle">📡 Live Data Feeds</text>
+    <line x1="15" y1="42" x2="165" y2="42" stroke="#A48374" stroke-width="0.5" />
+    <text x="25" y="65" class="box-body">● WAQI API (PM2.5/PM10)</text>
+    <text x="25" y="95" class="box-body">● Weather (Wind/Temp)</text>
+    <text x="25" y="125" class="box-body">● TomTom (Traffic Speed)</text>
+  </g>
+
+  <!-- Flow Line 1 -->
+  <path d="M 210 135 L 320 135" class="flow-line" />
+  <polygon points="320,135 310,130 310,140" class="arrow-head" />
+
+  <!-- Node 2: ML Engine -->
+  <g transform="translate(320, 60)">
+    <rect width="200" height="150" class="engine-box" />
+    <text x="100" y="28" class="box-title" text-anchor="middle" style="fill: #3A2D28;">🧠 AI Decision Core</text>
+    <line x1="15" y1="42" x2="185" y2="42" stroke="#3A2D28" stroke-width="0.5" />
+    <text x="25" y="65" class="box-body" style="font-weight: bold;">Random Forest Classifier</text>
+    <text x="25" y="85" class="box-body">Checks: PM10/PM2.5 Ratio</text>
+    <text x="25" y="115" class="box-body" style="font-weight: bold;">Safety Override Logic</text>
+    <text x="25" y="135" class="box-body">Checks: Wind Safety (&lt; 8m/s)</text>
+  </g>
+
+  <!-- Flow Line 2 -->
+  <path d="M 520 135 L 610 135" class="flow-line" />
+  <polygon points="610,135 600,130 600,140" class="arrow-head" />
+
+  <!-- Node 3: Fleet Deployment -->
+  <g transform="translate(610, 60)">
+    <rect width="160" height="150" class="box-bg" />
+    <text x="80" y="28" class="box-title" text-anchor="middle">💧 Smart Dispatch</text>
+    <line x1="15" y1="42" x2="145" y2="42" stroke="#A48374" stroke-width="0.5" />
+    <text x="20" y="65" class="box-body">● 5-Truck Sprinkler</text>
+    <text x="20" y="80" class="box-body">   Lerp Fleet System</text>
+    <text x="20" y="110" class="box-body">● Droplet Variation</text>
+    <text x="20" y="125" class="box-body">   (High/Low/Off)</text>
+    <text x="20" y="140" class="box-body">● Traffic Rerouting</text>
+  </g>
+</svg>
