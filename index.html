@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<!-- AirOptima v3 — Delhi AI Smart Pollution Control Dashboard
+     NEW: Animated truck movement (green=spray, yellow=returning), AQI before/after impact,
+          User review / custom alert panel, smart traffic+spray alerts -->
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AirOptima v3 — Delhi Smart Pollution Control</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.heat/0.2.0/leaflet-heat.js"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="loading">
+  <div style="font-size:17px;font-weight:700;letter-spacing:3px;">AIROPTIMA v3</div>
+  <div style="font-size:9.5px;color:var(--muted)">Initializing smart fleet…</div>
+  <div id="loading-bar"><div id="loading-fill"></div></div>
+</div>
+<div id="err-toast"></div>
+
+<div id="app">
+  <header>
+    <div class="logo">
+      <div class="logo-gem"></div>
+      <div>
+        <div class="logo-title">AIROPTIMA</div>
+        <div class="logo-sub">Delhi AI Pollution Control · MCD Smart System v3</div>
+      </div>
+    </div>
+    <div class="tabs">
+      <button class="tab active" onclick="switchTab('command',this)">Command</button>
+      <button class="tab" onclick="switchTab('analytics',this)">Analytics</button>
+      <button class="tab" onclick="switchTab('admin',this)">Admin</button>
+    </div>
+    <div class="hdr-right">
+      <div class="live"><div class="live-dot"></div>LIVE</div>
+      <span id="api-badge">API ●</span>
+      <span id="clock">--:--:--</span>
+    </div>
+  </header>
+
+  <div id="body">
+    <!-- LEFT -->
+    <div id="left">
+      <div class="kpi-grid">
+        <div class="kpi" style="--kc:var(--green)"><div class="kpi-val" id="kw">—</div><div class="kpi-lbl">Water Saved (kL)</div></div>
+        <div class="kpi" style="--kc:var(--cyan)"><div class="kpi-val" id="kp">—</div><div class="kpi-lbl">People Covered</div></div>
+        <div class="kpi" style="--kc:var(--gold)"><div class="kpi-val" id="kc">—</div><div class="kpi-lbl">Cost Saved</div></div>
+        <div class="kpi" style="--kc:var(--red)"><div class="kpi-val" id="ka">—</div><div class="kpi-lbl">Avg AQI</div></div>
+      </div>
+
+      <!-- TRUCK FLEET STATUS -->
+      <div class="sec-lbl">Fleet Status</div>
+      <div id="truck-fleet">
+        <div class="fleet-title">MCD Water Trucks · Live Positions</div>
+        <div id="fleet-list"></div>
+      </div>
+
+      <div class="sec-lbl">Zone Status · sorted by AQI</div>
+      <div id="zone-list"></div>
+      <div style="height:24px;"></div>
+    </div>
+
+    <!-- MAP -->
+    <div id="map-wrap">
+      <div id="map"></div>
+      <div id="truck-bar"></div>
+      <div id="heatmap-legend">
+        <div style="font-family:var(--mono);font-size:7.5px;color:var(--muted);letter-spacing:2px;margin-bottom:4px;">AQI HEAT INTENSITY</div>
+        <div class="heat-bar"></div>
+        <div class="heat-ends"><span>Low</span><span>Hazardous</span></div>
+      </div>
+      <div class="map-overlay" id="map-legend">
+        <div style="font-family:var(--mono);font-size:7.5px;color:var(--muted);letter-spacing:2px;margin-bottom:6px;">MAP LEGEND</div>
+        <div class="leg-row"><div class="leg-dot" style="background:#00e400"></div>AQI Good &lt;50</div>
+        <div class="leg-row"><div class="leg-dot" style="background:#ffff00"></div>Moderate 50–100</div>
+        <div class="leg-row"><div class="leg-dot" style="background:#ff7e00"></div>Unhealthy 101–200</div>
+        <div class="leg-row"><div class="leg-dot" style="background:#ff0000"></div>Very Unhealthy 201–300</div>
+        <div class="leg-row"><div class="leg-dot" style="background:#8f3f97"></div>Hazardous &gt;300</div>
+        <div style="height:4px;border-top:1px solid rgba(255,255,255,.05);margin:4px 0;"></div>
+        <div class="leg-row"><div class="leg-dot" style="background:var(--green)"></div>Spraying (active)</div>
+        <div class="leg-row"><div class="leg-dot" style="background:var(--yellow);border-radius:2px;"></div>Truck returning</div>
+      </div>
+      <div class="map-overlay" id="who-panel">
+        ⚠ PM2.5 <span id="who-x">—</span>× WHO limit<br>
+        AQI Avg: <span id="who-avg">—</span> | Fleet: <span id="who-trucks">0/5</span>
+      </div>
+      <div id="map-mode-bar">
+        <div class="mmode-btn active" onclick="setMapMode('normal',this)">◉ Markers</div>
+        <div class="mmode-btn" onclick="setMapMode('heatmap',this)">🌡 Heatmap</div>
+        <div class="mmode-btn" onclick="setMapMode('hotspot',this)">🎯 Hotspots</div>
+      </div>
+    </div>
+
+    <!-- RIGHT -->
+    <div id="right">
+      <!-- AI card with before/after impact -->
+      <div id="ai-card">
+        <div class="ai-lbl">◈ AI Decision Engine</div>
+        <div class="ai-text" id="ai-text">Waiting for data…</div>
+        <div class="ai-row"><span class="ai-key">Zone</span><span class="ai-val cc" id="ai-zone">—</span></div>
+        <div class="ai-row"><span class="ai-key">Source Type</span><span class="ai-val" id="ai-type">—</span></div>
+        <div class="ai-row"><span class="ai-key">PM10/PM2.5 Ratio</span><span class="ai-val cgd" id="ai-ratio">—</span></div>
+        <div class="ai-row"><span class="ai-key">Action</span><span class="ai-val cg" id="ai-action">—</span></div>
+        <div class="ai-row"><span class="ai-key">Confidence</span><span class="ai-val cg" id="ai-conf">—</span></div>
+        <div class="conf-bar"><div class="conf-fill" id="conf-fill" style="width:0%"></div></div>
+        <!-- AQI BEFORE / AFTER impact -->
+        <div class="ai-impact-strip" id="ai-impact-strip">
+          <div class="ai-impact-title">◈ Projected AQI Impact</div>
+          <div class="ai-impact-row">
+            <span class="ai-key" style="font-size:7.5px;">Before</span>
+            <span class="aqi-before" id="aqi-before">—</span>
+            <span class="aqi-arrow">→</span>
+            <span class="ai-key" style="font-size:7.5px;">After</span>
+            <span class="aqi-after" id="aqi-after">—</span>
+            <span class="aqi-change" id="aqi-change">—</span>
+          </div>
+          <div class="ai-impact-bar"><div class="ai-impact-bar-fill" id="impact-bar-fill" style="width:50%"></div></div>
+          <div class="ai-impact-note" id="impact-note">Estimated 4-hour reduction based on spray intensity and wind conditions</div>
+        </div>
+      </div>
+
+      <!-- PM Chart -->
+      <div class="chart-box">
+        <div class="chart-title">
+          <span id="pm-chart-title">PM2.5 &amp; PM10 — Real-time</span>
+          <span style="display:flex;gap:3px;">
+            <span class="chart-tab active" onclick="setPMView('realtime',this)">Live</span>
+            <span class="chart-tab" onclick="setPMView('bar',this)">Bar</span>
+            <span class="chart-tab" onclick="setPMView('ratio',this)">Ratio</span>
+          </span>
+        </div>
+        <canvas id="pmChart" height="95"></canvas>
+      </div>
+
+      <!-- Forecast -->
+      <div class="chart-box">
+        <div class="chart-title">AQI History + 6hr Forecast</div>
+        <canvas id="fcChart" height="85"></canvas>
+      </div>
+
+      <!-- Hotspot panel -->
+      <div id="hotspot-panel">
+        <div class="hs-title">🎯 Pollution Hotspots</div>
+        <div id="hotspot-list"></div>
+      </div>
+
+      <!-- News -->
+      <div id="news-panel">
+        <div class="news-title"><span>📡 Live Pollution Intel</span><div class="news-live-dot"></div></div>
+        <div id="news-feed"></div>
+      </div>
+
+      <!-- Impact summary -->
+      <div id="impact">
+        <div class="imp-title">⚡ Real-Time Impact</div>
+        <div class="imp-row"><span class="imp-key">Trucks Active</span><span class="imp-val" id="imp-t">0/5</span></div>
+        <div class="imp-row"><span class="imp-key">Combustion Skipped</span><span class="imp-val co" id="imp-s">0 zones</span></div>
+        <div class="imp-row"><span class="imp-key">AI Efficiency vs Uniform</span><span class="imp-val">+<span id="imp-e">0</span>%</span></div>
+        <div class="imp-row"><span class="imp-key">Water Saved Today</span><span class="imp-val" id="imp-w">— kL</span></div>
+      </div>
+
+      <!-- USER REVIEW / CUSTOM ALERT -->
+      <div id="review-panel">
+        <div class="review-title">
+          <span>✍ Field Review &amp; Custom Alerts</span>
+          <span style="font-size:7px;color:var(--muted);">Admin Only</span>
+        </div>
+        <div class="review-form">
+          <textarea class="review-input" id="review-input" rows="2" placeholder="Enter custom alert or field observation (e.g. 'Dust storm visible at Anand Vihar, manual spray needed')…"></textarea>
+          <div class="review-controls">
+            <select class="review-select" id="review-type">
+              <option value="alert">🔴 ALERT</option>
+              <option value="warning">🟡 WARNING</option>
+              <option value="action">🟢 ACTION</option>
+              <option value="info">🔵 INFO</option>
+            </select>
+            <select class="review-select" id="review-zone">
+              <option value="All Zones">All Zones</option>
+            </select>
+            <button class="review-btn" onclick="submitReview()">POST</button>
+          </div>
+        </div>
+        <div id="review-feed"></div>
+      </div>
+
+      <div class="sec-lbl">System Alert Feed</div>
+      <div id="alert-feed"></div>
+    </div>
+  </div>
+
+  <!-- ANALYTICS TAB -->
+  <div id="analytics">
+    <div class="an-card"><div class="an-ttl">Water Saved (kL)</div><div class="an-big cg" id="an-w">—</div><div class="an-sub">vs. uniform deployment</div></div>
+    <div class="an-card"><div class="an-ttl">Cost Savings</div><div class="an-big cgd" id="an-c">—</div><div class="an-sub">@ ₹8 per litre</div></div>
+    <div class="an-card"><div class="an-ttl">People Protected</div><div class="an-big cc" id="an-p">—</div><div class="an-sub">in active dust zones</div></div>
+    <div class="an-card"><div class="an-ttl">Avg AQI</div><div class="an-big cr" id="an-a">—</div><div class="an-sub">across all 10 zones</div></div>
+    <div class="an-card w2"><div class="an-ttl">Zone AQI Comparison</div><canvas id="aqiBarChart" height="110"></canvas></div>
+    <div class="an-card w2"><div class="an-ttl">Pollution Source Distribution</div><canvas id="pieChart" height="110"></canvas></div>
+    <div class="an-card w4"><div class="an-ttl">AI Decision Log</div><div style="overflow-x:auto;"><table class="log-table"><thead><tr><th>Zone</th><th>AQI</th><th>Before</th><th>After(est)</th><th>PM2.5</th><th>PM10</th><th>Ratio</th><th>Type</th><th>Conf.</th><th>Action</th><th>Truck</th><th>Wind</th><th>Reason</th></tr></thead><tbody id="log-body"></tbody></table></div></div>
+  </div>
+
+  <!-- ADMIN TAB -->
+  <div id="admin">
+    <div class="adm-card"><div class="adm-ttl">AQI Threshold</div><label class="rng-lbl">Activation Level: <strong class="cc" id="thr-val">180</strong> AQI</label><input type="range" id="thr-slider" min="100" max="400" value="180" oninput="document.getElementById('thr-val').textContent=this.value"><div class="rng-ends"><span>100 Sensitive</span><span>400 Crisis Only</span></div></div>
+    <div class="adm-card">
+      <div class="adm-ttl">Fleet Controls</div>
+      <button class="btn btn-blue" onclick="adminRefresh()">↺ Force Refresh Now</button>
+      <button class="btn btn-green mt6" onclick="adminDeployAll()">Deploy All Eligible Trucks</button>
+      <button class="btn btn-red mt6" onclick="adminResetOverrides()">✕ Reset All Overrides</button>
+    </div>
+    <div class="adm-card">
+      <div class="adm-ttl">System Toggles</div>
+      <div class="tgl-row"><span class="tgl-lbl">AI Auto-Routing</span><div class="tgl on" id="tgl-ai" onclick="this.classList.toggle('on')"><div class="tgl-t"></div></div></div>
+      <div class="tgl-row"><span class="tgl-lbl">Combustion Skip Logic</span><div class="tgl on" id="tgl-skip" onclick="this.classList.toggle('on')"><div class="tgl-t"></div></div></div>
+      <div class="tgl-row"><span class="tgl-lbl">Live Alerts Feed</span><div class="tgl on" id="tgl-alerts" onclick="this.classList.toggle('on')"><div class="tgl-t"></div></div></div>
+      <div class="tgl-row"><span class="tgl-lbl">Wind Safety Check</span><div class="tgl on" id="tgl-wind" onclick="this.classList.toggle('on')"><div class="tgl-t"></div></div></div>
+      <div class="tgl-row"><span class="tgl-lbl">Traffic Spray Alerts</span><div class="tgl on" id="tgl-traffic" onclick="this.classList.toggle('on')"><div class="tgl-t"></div></div></div>
+    </div>
+    <div class="adm-card w3"><div class="adm-ttl">Manual Sprinkler Override — Click to Toggle Each Zone</div><div id="adm-zones"></div></div>
+  </div>
+
+  <div id="ticker"><div id="tick-text">Loading live data…</div></div>
+</div>
+
+<script src="script.js" defer></script>
+</body>
+</html>
