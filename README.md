@@ -112,13 +112,27 @@ The Random Forest model determines the chemical composition of particulate matte
 
 ### Prerequisites
 
-* Python 3.9+
+* Python 3.9+ (only required for manual installation)
 * Active API keys for the following endpoints:
   * **WAQI API** (Air Quality Index mapping)
   * **OpenWeatherMap API** (Wind speed safety validation)
   * **TomTom API** (Traffic speed indices)
 
-### 1. Installation
+### ◈ Run with Docker Compose (Recommended)
+
+Make sure you have Docker and Docker Compose installed. First, configure your `.env` file as described in the configuration step below, then simply execute:
+
+```bash
+docker-compose up --build -d
+```
+
+This builds the ML backend environment and hosts the static frontend dashboard on port 80 and the API server on port 5000.
+
+---
+
+### ◈ Manual Setup Option
+
+#### 1. Installation
 
 Clone the repository and install the backend modules:
 ```bash
@@ -127,7 +141,7 @@ cd airoptima
 pip install flask flask-cors numpy pandas scikit-learn requests python-dotenv
 ```
 
-### 2. Configure Environment
+#### 2. Configure Environment
 
 Create a `.env` file in the root workspace folder:
 ```env
@@ -136,7 +150,7 @@ TOMTOM_KEY=your_tomtom_key_here
 WAQI_KEY=your_waqi_key_here
 ```
 
-### 3. Run the Backend
+#### 3. Run the Backend
 
 Launch the multi-threaded Flask server:
 ```bash
@@ -144,7 +158,7 @@ python app.py
 ```
 *The backend automatically trains the Random Forest classifier model and hosts endpoints on `http://localhost:5000`.*
 
-### 4. Open the Command Center
+#### 4. Open the Command Center
 
 Simply open `index.html` in your web browser. The dashboard automatically syncs with the live API server.
 

@@ -14,7 +14,7 @@
   <text x="25" y="83" class="desc">real-time intelligence.</text>
   <text x="25" y="110" class="bullet">● <tspan font-weight="bold">Flask &amp; CORS:</tspan> REST API server</text>
   <text x="25" y="128" class="bullet">● <tspan font-weight="bold">Python Feeds:</tspan> Real-time APIs</text>
-  <text x="25" y="146" class="bullet">● <tspan font-weight="bold">Dotenv Config:</tspan> Credentials</text>
+  <text x="25" y="146" class="bullet">● <tspan font-weight="bold">Docker &amp; Nginx:</tspan> Deployment</text>
 
   <!-- Card 2: Hybrid ML Engine -->
   <rect x="276" y="10" width="248" height="160" class="card-bg" stroke="#CBAD8D" />
