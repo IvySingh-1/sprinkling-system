@@ -25,8 +25,8 @@
     .flow-wave-accent { stroke: #CBAD8D; stroke-width: 1; fill: none; stroke-dasharray: 15 15; animation: windFlow 4s linear infinite; opacity: 0.6; }
     .drop { fill: #CBAD8D; animation: droplet 2s infinite linear; }
     .dust { fill: #A48374; animation: floatDust 4s infinite ease-in-out; }
-    .headline { fill: #F1EDE6; font-family: 'Segoe UI', system-ui, sans-serif; font-size: 42px; font-weight: 900; letter-spacing: 6px; }
-    .tagline { fill: #CBAD8D; font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: bold; letter-spacing: 2px; }
+    .headline { fill: #F1EDE6; font-family: 'Segoe UI', system-ui, sans-serif; font-size: 28px; font-weight: 900; letter-spacing: 1.5px; }
+    .tagline { fill: #CBAD8D; font-family: 'JetBrains Mono', monospace; font-size: 11.5px; font-weight: bold; letter-spacing: 1.5px; }
     .status-badge { fill: #3A2D28; stroke: #CBAD8D; stroke-width: 1.5; rx: 4px; }
   </style>
   
@@ -77,8 +77,8 @@
   <circle cx="610" cy="195" r="4.5" class="dust" style="animation-delay: 2.8s; animation-duration: 4.1s;" />
 
   <!-- Typography -->
-  <text x="60" y="115" class="headline">AIROPTIMA</text>
-  <text x="63" y="145" class="tagline">SMART AI POLLUTION MITIGATION &amp; LOGISTICS</text>
+  <text x="60" y="115" class="headline">AI-Driven Smart Sprinkling System</text>
+  <text x="63" y="142" class="tagline">DATA-DRIVEN DUST CONTROL &amp; SMART FLEET ROUTING</text>
 
   <!-- Small details: HUD corner ticks -->
   <path d="M 15 15 L 15 35 M 15 15 L 35 15" stroke="#CBAD8D" stroke-width="2" fill="none" />

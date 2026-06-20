@@ -1,9 +1,9 @@
 # AirOptima v3: AI-Driven Smart Sprinkling System for Delhi-NCR
-### 🏆 Winning Project – EPAM Climate Data Hackathon, Delhi 2026 | Awarded ₹1,00,000 Cash Prize (~USD 1060)
+### Winning Project – EPAM Climate Data Hackathon, Delhi 2026 | Awarded ₹1,00,000 Cash Prize (~USD 1060)
 
 <!-- VISUAL 1: ANIMATED BANNER (SVG) -->
 <div align="center">
-  <img src="./assets/banner.svg" width="100%" alt="AirOptima Animated Banner" style="border-radius: 12px; box-shadow: 0 8px 24px rgba(58, 45, 40, 0.25);">
+  <img src="./assets/banner.svg" width="100%" alt="AirOptima Animated Banner" style="border-radius: 12px; box-shadow: 0 8px 24px rgba(58, 45, 40, 0.25); pointer-events: none; cursor: default;">
 </div>
 
 ---
@@ -22,38 +22,9 @@ Mitigating air pollution in a metropolitan city like Delhi is not a matter of si
 
 **AirOptima** introduces an AI-driven, selective mitigation paradigm. By combining a **Hybrid Machine Learning Engine** with live GIS mapping and fleet routing simulators, it ensures that water is sprayed only when and where it is meteorologically and chemically effective.
 
+<!-- THE SOLUTION COMPARISON TABLE (SVG) -->
 <div align="center" style="margin: 20px 0;">
-  <table style="width: 100%; border-collapse: collapse; border-spacing: 0; font-family: 'Segoe UI', sans-serif; font-size: 13px;">
-    <thead>
-      <tr style="background-color: #3A2D28; color: #F1EDE6; border-bottom: 2px solid #CBAD8D;">
-        <th style="padding: 12px; text-align: left; border-right: 1px solid #D1C7BD;">Feature</th>
-        <th style="padding: 12px; text-align: left; border-right: 1px solid #D1C7BD;">Traditional Sprinkling</th>
-        <th style="padding: 12px; text-align: left;">AirOptima Smart System</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr style="background-color: #F1EDE6; color: #3A2D28; border-bottom: 1px solid #D1C7BD;">
-        <td style="padding: 12px; font-weight: bold; border-right: 1px solid #D1C7BD;">Deployment Trigger</td>
-        <td style="padding: 12px; border-right: 1px solid #D1C7BD;">Scheduled (Blind to active pollution types)</td>
-        <td style="padding: 12px; font-weight: bold; color: #A48374;">AI Classification (Dust vs. Combustion)</td>
-      </tr>
-      <tr style="background-color: #EBE3DB; color: #3A2D28; border-bottom: 1px solid #D1C7BD;">
-        <td style="padding: 12px; font-weight: bold; border-right: 1px solid #D1C7BD;">Water Conservation</td>
-        <td style="padding: 12px; border-right: 1px solid #D1C7BD;">0% (Uniform water drain)</td>
-        <td style="padding: 12px; font-weight: bold; color: #A48374;">68.5% Water Saved Daily</td>
-      </tr>
-      <tr style="background-color: #F1EDE6; color: #3A2D28; border-bottom: 1px solid #D1C7BD;">
-        <td style="padding: 12px; font-weight: bold; border-right: 1px solid #D1C7BD;">Safety Integration</td>
-        <td style="padding: 12px; border-right: 1px solid #D1C7BD;">None (Spraying continues in high winds)</td>
-        <td style="padding: 12px; font-weight: bold; color: #A48374;">Wind speed &amp; Direction checks</td>
-      </tr>
-      <tr style="background-color: #EBE3DB; color: #3A2D28;">
-        <td style="padding: 12px; font-weight: bold; border-right: 1px solid #D1C7BD;">Fleet Coordination</td>
-        <td style="padding: 12px; border-right: 1px solid #D1C7BD;">Fixed static routes</td>
-        <td style="padding: 12px; font-weight: bold; color: #A48374;">Dynamic TomTom Traffic Routing</td>
-      </tr>
-    </tbody>
-  </table>
+  <img src="./assets/comparison_table.svg" width="100%" alt="Traditional vs AirOptima Comparison Table" style="border-radius: 8px; border: 1.5px solid #D1C7BD; box-shadow: 0 4px 12px rgba(58, 45, 40, 0.15);">
 </div>
 
 ---
@@ -74,41 +45,9 @@ The system fetches live weather, traffic, and particulate density coordinates. I
 AirOptima is architected as a modular, responsive full-stack system designed to handle real-time geospatial data.
 
 <!-- VISUAL 3: TECH MATRIX (HTML GRID) -->
+<!-- TECH MATRIX GRIDS (SVG) -->
 <div align="center" style="margin-top: 15px;">
-  <table style="width: 100%; border-spacing: 12px; border-collapse: separate; background: transparent; font-family: 'Segoe UI', system-ui, sans-serif;">
-    <tr>
-      <!-- Column 1: Core System -->
-      <td width="33.3%" style="background-color: #3A2D28; border: 1.5px solid #A48374; border-radius: 12px; padding: 20px; vertical-align: top; color: #F1EDE6; box-shadow: 0 4px 12px rgba(58,45,40,0.15);">
-        <h3 style="margin-top: 0; color: #CBAD8D; border-bottom: 1.5px solid #A48374; padding-bottom: 8px; font-family: 'JetBrains Mono', monospace; font-size: 14px;">🎛️ CORE BACKEND</h3>
-        <p style="font-size: 12.5px; line-height: 1.6; color: #EBE3DB;">The analytical foundation driving real-time intelligence.</p>
-        <ul style="padding-left: 18px; margin: 0; font-size: 12px; color: #D1C7BD; line-height: 1.8;">
-          <li><b>Flask &amp; CORS:</b> Multi-threaded REST API server.</li>
-          <li><b>Python Live Feeds:</b> Connects to real-time APIs.</li>
-          <li><b>Dotenv Config:</b> Secure local credential management.</li>
-        </ul>
-      </td>
-      <!-- Column 2: Decision Engine -->
-      <td width="33.3%" style="background-color: #3A2D28; border: 1.5px solid #CBAD8D; border-radius: 12px; padding: 20px; vertical-align: top; color: #F1EDE6; box-shadow: 0 4px 12px rgba(58,45,40,0.15);">
-        <h3 style="margin-top: 0; color: #F1EDE6; border-bottom: 1.5px solid #CBAD8D; padding-bottom: 8px; font-family: 'JetBrains Mono', monospace; font-size: 14px;"> HYBRID ML ENGINE</h3>
-        <p style="font-size: 12.5px; line-height: 1.6; color: #EBE3DB;">Distinguishes dust from smoke to prevent water wastage.</p>
-        <ul style="padding-left: 18px; margin: 0; font-size: 12px; color: #D1C7BD; line-height: 1.8;">
-          <li><b>Scikit-Learn:</b> Random Forest Classifier model.</li>
-          <li><b>Pandas &amp; NumPy:</b> Data processing pipelines.</li>
-          <li><b>StandardScaler:</b> Feature normalization.</li>
-        </ul>
-      </td>
-      <!-- Column 3: Dashboard & GIS -->
-      <td width="33.3%" style="background-color: #3A2D28; border: 1.5px solid #A48374; border-radius: 12px; padding: 20px; vertical-align: top; color: #F1EDE6; box-shadow: 0 4px 12px rgba(58,45,40,0.15);">
-        <h3 style="margin-top: 0; color: #CBAD8D; border-bottom: 1.5px solid #A48374; padding-bottom: 8px; font-family: 'JetBrains Mono', monospace; font-size: 14px;"> COMMAND SYSTEM</h3>
-        <p style="font-size: 12.5px; line-height: 1.6; color: #EBE3DB;">Real-time dispatch controls and map animations.</p>
-        <ul style="padding-left: 18px; margin: 0; font-size: 12px; color: #D1C7BD; line-height: 1.8;">
-          <li><b>Leaflet Maps:</b> Live truck tracking &amp; heatmaps.</li>
-          <li><b>Chart.js Plots:</b> PM2.5/PM10 ratio &amp; AQI forecasts.</li>
-          <li><b>Glassmorphic UI:</b> Neon-highlighted dark interfaces.</li>
-        </ul>
-      </td>
-    </tr>
-  </table>
+  <img src="./assets/tech_matrix.svg" width="100%" alt="AirOptima Tech Stack & Architecture" style="border-radius: 12px; box-shadow: 0 4px 16px rgba(58, 45, 40, 0.15);">
 </div>
 
 ---
@@ -190,16 +129,9 @@ Simply open `index.html` in your web browser. The dashboard automatically syncs 
 
 ---
 
-<div align="center" style="margin-top: 50px; padding: 25px; background: #3A2D28; border-radius: 12px; border: 1.5px solid #CBAD8D; font-family: 'Segoe UI', sans-serif; color: #F1EDE6;">
-  <p style="font-size: 15px; font-weight: bold; margin-top: 0; color: #CBAD8D;">Thank you for exploring this project.</p>
-  <p style="font-size: 12px; color: #EBE3DB; margin-bottom: 20px;">⭐ If you found value in it, consider starring the repository.</p>
-  
-  <div style="width: 60px; height: 1.5px; background: #A48374; margin: 15px auto;"></div>
-  
-  <p style="font-size: 13px; font-weight: bold; margin-bottom: 5px;">Developed by Ivy Singh</p>
-  <p style="font-size: 12px; margin-bottom: 12px; font-family: 'JetBrains Mono', monospace;"><a href="mailto:ivysingh99@gmail.com" style="color: #CBAD8D; text-decoration: none;">ivysingh99@gmail.com</a></p>
-  
-  <a href="https://www.linkedin.com/in/ivysingh99/" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; background: #A48374; color: #F1EDE6; text-decoration: none; border-radius: 6px; font-size: 12px; font-weight: bold; transition: background 0.3s;">
-    🔗 LinkedIn
+<!-- FOOTER (SVG) -->
+<div align="center" style="margin-top: 50px;">
+  <a href="https://www.linkedin.com/in/ivysingh99/" target="_blank">
+    <img src="./assets/footer.svg" width="100%" alt="Thank you for exploring this project. Developed by Ivy Singh. LinkedIn Profile: https://www.linkedin.com/in/ivysingh99/">
   </a>
 </div>

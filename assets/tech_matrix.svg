@@ -1,0 +1,38 @@
+<svg viewBox="0 0 800 180" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .card-bg { fill: #3A2D28; stroke-width: 1.5; rx: 12px; }
+    .title { font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: bold; }
+    .desc { fill: #EBE3DB; font-family: 'Segoe UI', sans-serif; font-size: 11px; }
+    .bullet { fill: #D1C7BD; font-family: 'Segoe UI', sans-serif; font-size: 11px; }
+  </style>
+
+  <!-- Card 1: Core Backend -->
+  <rect x="10" y="10" width="246" height="160" class="card-bg" stroke="#A48374" />
+  <text x="25" y="38" class="title" fill="#CBAD8D">CORE BACKEND</text>
+  <line x1="25" y1="48" x2="241" y2="48" stroke="#A48374" stroke-width="0.5" />
+  <text x="25" y="68" class="desc">The analytical foundation driving</text>
+  <text x="25" y="83" class="desc">real-time intelligence.</text>
+  <text x="25" y="110" class="bullet">● <tspan font-weight="bold">Flask &amp; CORS:</tspan> REST API server</text>
+  <text x="25" y="128" class="bullet">● <tspan font-weight="bold">Python Feeds:</tspan> Real-time APIs</text>
+  <text x="25" y="146" class="bullet">● <tspan font-weight="bold">Dotenv Config:</tspan> Credentials</text>
+
+  <!-- Card 2: Hybrid ML Engine -->
+  <rect x="276" y="10" width="248" height="160" class="card-bg" stroke="#CBAD8D" />
+  <text x="291" y="38" class="title" fill="#F1EDE6">HYBRID ML ENGINE</text>
+  <line x1="291" y1="48" x2="509" y2="48" stroke="#CBAD8D" stroke-width="0.5" />
+  <text x="291" y="68" class="desc">Distinguishes dust from smoke to</text>
+  <text x="291" y="83" class="desc">prevent water wastage.</text>
+  <text x="291" y="110" class="bullet">● <tspan font-weight="bold">Scikit-Learn:</tspan> Random Forest</text>
+  <text x="291" y="128" class="bullet">● <tspan font-weight="bold">Pandas &amp; NumPy:</tspan> Data pipeline</text>
+  <text x="291" y="146" class="bullet">● <tspan font-weight="bold">StandardScaler:</tspan> Normalization</text>
+
+  <!-- Card 3: Command System -->
+  <rect x="544" y="10" width="246" height="160" class="card-bg" stroke="#A48374" />
+  <text x="559" y="38" class="title" fill="#CBAD8D">COMMAND SYSTEM</text>
+  <line x1="559" y1="48" x2="775" y2="48" stroke="#A48374" stroke-width="0.5" />
+  <text x="559" y="68" class="desc">Real-time dispatch controls and</text>
+  <text x="559" y="83" class="desc">map animations.</text>
+  <text x="559" y="110" class="bullet">● <tspan font-weight="bold">Leaflet Maps:</tspan> Tracking &amp; heatmaps</text>
+  <text x="559" y="128" class="bullet">● <tspan font-weight="bold">Chart.js Plots:</tspan> Live PM &amp; forecasts</text>
+  <text x="559" y="146" class="bullet">● <tspan font-weight="bold">Glassmorphic UI:</tspan> Dark interfaces</text>
+</svg>

@@ -11,8 +11,11 @@
     .subtitle { fill: #CBAD8D; font-family: 'JetBrains Mono', monospace; font-size: 9px; }
   </style>
 
+  <!-- Background Card Border & Fill -->
+  <rect x="1" y="1" width="598" height="218" rx="12" ry="12" fill="#3A2D28" stroke="#A48374" stroke-width="1.5" />
+
   <!-- Title -->
-  <text x="25" y="32" class="title">📊 Daily Water Usage Simulation</text>
+  <text x="25" y="32" class="title">Daily Water Usage Simulation</text>
   <text x="25" y="47" class="subtitle">COMPARING 10 DELHI ZONES (UNIFORM MITIGATION vs. AIROPTIMA ACTION)</text>
 
   <!-- Y-Axis -->
