@@ -38,11 +38,52 @@ The system fetches live weather, traffic, and particulate density coordinates. I
   <img src="./assets/flowchart.svg" width="100%" alt="AirOptima Data Flow Pipeline" style="border-radius: 12px; border: 1px solid #A48374; box-shadow: 0 4px 16px rgba(0,0,0,0.15);">
 </div>
 
+### Pipeline Workflow Schematic
+
+```mermaid
+graph TD
+    %% Define Styles using custom color palette
+    classDef dark fill:#3A2D28,stroke:#CBAD8D,stroke-width:2px,color:#F1EDE6;
+    classDef warm fill:#A48374,stroke:#CBAD8D,stroke-width:1px,color:#F1EDE6;
+    classDef tan fill:#CBAD8D,stroke:#3A2D28,stroke-width:1px,color:#3A2D28;
+    classDef cream fill:#EBE3DB,stroke:#A48374,stroke-width:1px,color:#3A2D28;
+    
+    %% Diagram Structure
+    subgraph INPUTS ["Live Environmental Feeds"]
+        A["WAQI API: PM2.5 & PM10"]:::cream
+        B["OpenWeather API: Wind & Temp"]:::cream
+        C["TomTom API: Traffic Congestion"]:::cream
+    end
+    
+    subgraph ENGINE ["Decision Core"]
+        D["Random Forest Classifier"]:::tan
+        E{"Check Ratio & Wind"}:::tan
+    end
+    
+    subgraph ACTIONS ["Fleet Command"]
+        F["High/Low Water Spraying"]:::warm
+        G["Combustion Skip Action"]:::warm
+        H["Congestion Alert Trigger"]:::warm
+    end
+    
+    %% Connections
+    A --> D
+    B --> D
+    C --> D
+    D --> E
+    E -->|"Ratio > 1.85 & Wind < 8m/s"| F
+    E -->|"Ratio < 1.35"| G
+    C --> H
+    
+    %% Apply overall styling
+    style INPUTS fill:#3A2D28,stroke:#A48374,color:#F1EDE6
+    style ENGINE fill:#3A2D28,stroke:#CBAD8D,color:#F1EDE6
+    style ACTIONS fill:#3A2D28,stroke:#A48374,color:#F1EDE6
+```
+
 ---
 
 ## ◈ Tech Stack & Architecture
-
-AirOptima is architected as a modular, responsive full-stack system designed to handle real-time geospatial data.
 
 <!-- VISUAL 3: TECH MATRIX (HTML GRID) -->
 <!-- TECH MATRIX GRIDS (SVG) -->
@@ -67,22 +108,7 @@ The Random Forest model determines the chemical composition of particulate matte
 
 ---
 
-## ◈ Simulated Water & Cost Efficiencies
-
-By actively skipping combustion-dominant zones and adapting pressure thresholds based on wind conditions, AirOptima achieves major resource optimizations.
-
-<!-- VISUAL 5: PERFORMANCE CHART (SVG) -->
-<div align="center" style="margin: 15px 0;">
-  <img src="./assets/performance_chart.svg" width="100%" alt="Comparative Water Usage Chart" style="border-radius: 12px; border: 1px solid #A48374; box-shadow: 0 4px 16px rgba(0,0,0,0.15);">
-</div>
-
-*Note: The chart displays representative metrics under typical simulated conditions. The actual water savings and cost reductions are calculated dynamically in real-time by the backend server based on live WAQI, OpenWeatherMap, and TomTom feeds.*
-
----
-
 ## ◈ Getting Started
-
-Follow these steps to deploy and run the AirOptima command dashboard locally.
 
 ### Prerequisites
 

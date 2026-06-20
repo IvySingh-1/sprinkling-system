@@ -1,30 +1,28 @@
-<svg viewBox="0 0 800 200" xmlns="http://www.w3.org/2000/svg">
+<svg viewBox="0 0 800 180" xmlns="http://www.w3.org/2000/svg">
   <style>
     .card { fill: #3A2D28; stroke: #CBAD8D; stroke-width: 1.5; rx: 12px; }
     .text-title { fill: #CBAD8D; font-family: 'Segoe UI', system-ui, sans-serif; font-size: 15px; font-weight: bold; }
     .text-sub { fill: #EBE3DB; font-family: 'Segoe UI', system-ui, sans-serif; font-size: 12px; }
     .divider { stroke: #A48374; stroke-width: 1; opacity: 0.5; }
-    .text-name { fill: #F1EDE6; font-family: 'Segoe UI', system-ui, sans-serif; font-size: 13px; font-weight: bold; }
     .text-email { fill: #D1C7BD; font-family: 'JetBrains Mono', monospace; font-size: 11px; }
     .btn-bg { fill: #A48374; rx: 6px; }
     .btn-text { fill: #F1EDE6; font-family: 'Segoe UI', system-ui, sans-serif; font-size: 12px; font-weight: bold; }
   </style>
 
   <!-- Outer Card -->
-  <rect x="1" y="1" width="798" height="198" class="card" />
+  <rect x="1" y="1" width="798" height="178" class="card" />
 
   <!-- Content (Centered align) -->
   <text x="400" y="42" class="text-title" text-anchor="middle">Thank you for exploring this project.</text>
   <text x="400" y="65" class="text-sub" text-anchor="middle">If you found value in it, consider starring the repository.</text>
 
   <!-- Divider Line -->
-  <line x1="370" y1="85" x2="430" y2="85" class="divider" />
+  <line x1="370" y1="82" x2="430" y2="82" class="divider" />
 
-  <text x="400" y="112" class="text-name" text-anchor="middle">Developed by Ivy Singh</text>
-  <text x="400" y="132" class="text-email" text-anchor="middle">ivysingh99@gmail.com</text>
+  <text x="400" y="110" class="text-email" text-anchor="middle">ivysingh99@gmail.com</text>
 
   <!-- LinkedIn Button -->
-  <g transform="translate(345, 150)">
+  <g transform="translate(345, 130)">
     <rect width="110" height="28" class="btn-bg" />
     <text x="55" y="18" class="btn-text" text-anchor="middle">LinkedIn</text>
   </g>
