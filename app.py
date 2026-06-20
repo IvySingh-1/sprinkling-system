@@ -4,7 +4,7 @@ import os
 load_dotenv()  # loads keys from .env automatically
 
 import math, time, random, warnings
-import numpy as np
+import numpy as nptel
 import pandas as pd
 from datetime import datetime
 from collections import deque
@@ -12,7 +12,6 @@ from collections import deque
 import requests
 from flask import Flask, jsonify, request
 from flask_cors import CORS
-
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.preprocessing import StandardScaler, LabelEncoder
 
@@ -404,4 +403,4 @@ if __name__ == "__main__":
     print(f"   OPENWEATHER_KEY : {'✅' if OPENWEATHER_KEY else '❌'}")
     print(f"   TOMTOM_KEY      : {'✅' if TOMTOM_KEY else '❌'}")
     print(f"   WAQI_KEY        : {'✅' if WAQI_KEY else '❌'}")
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    app.run(host="0.0.0.0", port=5000, debug=False)
