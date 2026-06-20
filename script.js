@@ -1,4 +1,5 @@
-const API_BASE = "http://localhost:5000/api";
+// const API_BASE = "http://localhost:5000/api";
+const API_BASE = "https://sprinkler-system-backend.onrender.com/api";
 const REFRESH_SEC = 30;
 const DEPOT = { lat: 28.6139, lng: 77.209 };
 
