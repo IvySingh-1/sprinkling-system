@@ -6,11 +6,11 @@
   <img src="./assets/banner.svg" width="100%" alt="AirOptima Animated Banner" style="border-radius: 12px; box-shadow: 0 8px 24px rgba(58, 45, 40, 0.25); pointer-events: none; cursor: default;">
 </div>
 
-<div align="center" style="margin-top: 18px;">
-  <a href="https://sprinkling-system-frontend.onrender.com/" target="_blank">
+<p align="center">
+  <a href="https://sprinkling-system-frontend.onrender.com/" target="_blank" rel="noopener noreferrer">
     <img src="./assets/live_demo.svg" alt="Launch Live Demo" width="240">
   </a>
-</div>
+</p>
 
 ---
 
