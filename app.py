@@ -4,7 +4,7 @@ import os
 load_dotenv()  # loads keys from .env automatically
 
 import math, time, random, warnings
-import numpy as nptel
+import numpy as np
 import pandas as pd
 from datetime import datetime
 from collections import deque

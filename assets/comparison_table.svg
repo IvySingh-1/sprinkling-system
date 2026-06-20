@@ -57,12 +57,12 @@
     <!-- Row 3 -->
     <text x="20" y="163" class="text-title">Safety Integration</text>
     <text x="220" y="163" class="text-body">None (Spraying continues in high winds)</text>
-    <text x="520" y="163" class="text-smart">Wind speed &amp; Direction checks</text>
+    <text x="520" y="163" class="text-smart">Wind speed safety checks</text>
 
     <!-- Row 4 -->
     <text x="20" y="208" class="text-title">Fleet Coordination</text>
     <text x="220" y="208" class="text-body">Fixed static routes</text>
-    <text x="520" y="208" class="text-smart">Dynamic TomTom Traffic Routing</text>
+    <text x="520" y="208" class="text-smart">TomTom Traffic Congestion Alerts</text>
   </g>
 
   <!-- Outer Border -->

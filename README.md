@@ -12,9 +12,9 @@
 
 Mitigating air pollution in a metropolitan city like Delhi is not a matter of simply "spraying water." uniform deployments lead to massive inefficiencies and dry reservoirs:
 
-* ** The Gaseous vs. Coarse Particle Dilemma**: Water spraying binds heavy dust (**PM10**), forcing it to settle. However, spraying combustion-dominant pollutants (**PM2.5** like vehicular exhaust or smoke) is virtually ineffective, resulting in water wastage in critical times.
-* ** Blind Logistics**: Deploying municipal tankers uniformly across multiple locations fails to prioritize the zones with critical needs and high human exposure.
-* ** Massive Resource Drain**: Uniform distribution wastes up to **68%** of municipal water resources while failing to lower PM density in combustion-heavy sectors.
+* **The Gaseous vs. Coarse Particle Dilemma**: Water spraying binds heavy dust (**PM10**), forcing it to settle. However, spraying combustion-dominant pollutants (**PM2.5** like vehicular exhaust or smoke) is virtually ineffective, resulting in water wastage in critical times.
+* **Blind Logistics**: Deploying municipal tankers uniformly across multiple locations fails to prioritize the zones with critical needs and high human exposure.
+* **Massive Resource Drain**: Uniform distribution wastes up to **68%** of municipal water resources while failing to lower PM density in combustion-heavy sectors.
 
 ---
 
@@ -61,9 +61,9 @@ The Random Forest model determines the chemical composition of particulate matte
   <img src="./assets/ratio_scale.svg" width="100%" alt="PM10 / PM2.5 Ratio Scale" style="border-radius: 12px; border: 1px solid #A48374;">
 </div>
 
-* ** Combustion Dominant (Ratio < 1.35)**: Primarily vehicular exhaust, crop fires, and smoke. Sprinklers are **skipped** here because water droplets do not affect these fine particles.
-* ** Mixed Sources (Ratio 1.35 – 1.85)**: Combined particles. Prevents high concentration by utilizing a **preventive low-intensity spray**.
-* ** Dust Dominant (Ratio > 1.85)**: Heavy construction dust and sand. Triggers a **high-intensity water spray** to suppress the settling process.
+* **Combustion Dominant (Ratio < 1.35)**: Primarily vehicular exhaust, crop fires, and smoke. Sprinklers are **skipped** here because water droplets do not affect these fine particles.
+* **Mixed Sources (Ratio 1.35 – 1.85)**: Combined particles. Prevents high concentration by utilizing a **preventive low-intensity spray**.
+* **Dust Dominant (Ratio > 1.85)**: Heavy construction dust and sand. Triggers a **high-intensity water spray** to suppress the settling process.
 
 ---
 
@@ -75,6 +75,8 @@ By actively skipping combustion-dominant zones and adapting pressure thresholds 
 <div align="center" style="margin: 15px 0;">
   <img src="./assets/performance_chart.svg" width="100%" alt="Comparative Water Usage Chart" style="border-radius: 12px; border: 1px solid #A48374; box-shadow: 0 4px 16px rgba(0,0,0,0.15);">
 </div>
+
+*Note: The chart displays representative metrics under typical simulated conditions. The actual water savings and cost reductions are calculated dynamically in real-time by the backend server based on live WAQI, OpenWeatherMap, and TomTom feeds.*
 
 ---
 
@@ -124,14 +126,14 @@ Simply open `index.html` in your web browser. The dashboard automatically syncs 
 
 ## ◈ Future Milestones
 
-* ** RAG Integration**: Developing Retrieval-Augmented Generation vectors to query municipal mitigation history via natural language prompts (e.g. *"Which sectors saved the most water last month?"*).
-* ** Adaptive Re-training**: Enabling online learning patterns to automatically adjust class boundaries during seasonal winter smog transitions.
+* **RAG Integration**: Developing Retrieval-Augmented Generation vectors to query municipal mitigation history via natural language prompts (e.g. *"Which sectors saved the most water last month?"*).
+* **Adaptive Re-training**: Enabling online learning patterns to automatically adjust class boundaries during seasonal winter smog transitions.
 
 ---
 
 <!-- FOOTER (SVG) -->
 <div align="center" style="margin-top: 50px;">
   <a href="https://www.linkedin.com/in/ivysingh99/" target="_blank">
-    <img src="./assets/footer.svg" width="100%" alt="Thank you for exploring this project. Developed by Ivy Singh. LinkedIn Profile: https://www.linkedin.com/in/ivysingh99/">
+    <img src="./assets/footer.svg" width="100%" alt="Thank you for exploring this project. LinkedIn Profile: https://www.linkedin.com/in/ivysingh99/">
   </a>
 </div>

@@ -61,6 +61,6 @@
     <text x="20" y="80" class="box-body">   Lerp Fleet System</text>
     <text x="20" y="110" class="box-body">● Droplet Variation</text>
     <text x="20" y="125" class="box-body">   (High/Low/Off)</text>
-    <text x="20" y="140" class="box-body">● Traffic Rerouting</text>
+    <text x="20" y="140" class="box-body">● Congestion Alerting</text>
   </g>
 </svg>
